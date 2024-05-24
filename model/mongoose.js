@@ -7,7 +7,6 @@ const models = {}
 mongoose.connect(process.env.CONNECTION_URI);
 
 const gameSchema = new mongoose.Schema({
-    _id: mongoose.Types.ObjectId,
     Name: String,
     Release: String,
     Director: String,
@@ -18,7 +17,6 @@ const gameSchema = new mongoose.Schema({
 })
 
 const developerSchema = new mongoose.Schema({
-    _id:mongoose.Types.ObjectId,
     Name: String,
     Founded: String,
     Headquarters: String,
@@ -27,7 +25,6 @@ const developerSchema = new mongoose.Schema({
 })
 
 const publisherSchema = new mongoose.Schema({
-    _id:mongoose.Types.ObjectId,
     Name: String,
     Founded: String,
     Headquarters: String,
@@ -36,7 +33,6 @@ const publisherSchema = new mongoose.Schema({
 })
 
 const reviewSchema = new mongoose.Schema({
-    _id: mongoose.Types.ObjectId,
     UserId: Number,
     Title: String,
     Content: String,
