@@ -1,0 +1,44 @@
+
+### Test locally Welcome
+GET http://localhost:3000/
+
+### Test locally get all developers
+GET http://localhost:3000/developer
+
+### Test locally get developer by id
+GET http://localhost:3000/developer/
+
+
+### Test locally get developer by userId
+GET http://localhost:3000/developer/user/1919191919171
+
+### Create developer
+POST http://localhost:3000/developer/new-developer
+content-type: application/json
+
+{
+    "UserId": 1919191919171,
+    "Title": "A bad game",
+    "Content": "I have never seen a game so bad",
+    "Rating": 1,
+    "Date": "5/24/2024",
+    "Verified": "True"
+  }
+
+
+### Update developer
+PUT http://localhost:3000/developer/6650254558df2d16e841b666
+content-type: application/json
+
+{
+    "UserId": 1919191919181,
+    "Title": "An average game",
+    "Content": "I have never seen a game so average",
+    "Rating": 5,
+    "Date": "5/21/2024",
+    "Verified": "True"
+  }
+
+
+### Delete developer by id
+DELETE http://localhost:3000/developer/66502617b8ce07056d956971

@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const 
 
 const getAllReviews = async (req, res) => {
   // #swagger.tags=["Reviews"]
@@ -106,7 +107,7 @@ const deleteReview = async (req, res) => {
   }
 };
 
-const reviewSchema = new mongoose.Schema({
+/* const reviewSchema = new mongoose.Schema({
   UserId: String,
   Title: String,
   Content: String,
@@ -116,7 +117,7 @@ const reviewSchema = new mongoose.Schema({
 });
 
 const reviewModel = mongoose.model("reviews", reviewSchema, "reviews");
-
+ */
 module.exports = {
   getAllReviews,
   getReviewById,
