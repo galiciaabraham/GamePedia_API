@@ -28,17 +28,19 @@ content-type: application/json
 
 
 ### Update game
-PUT http://localhost:3000/game/66511f39c4fadbb7a2ca490b
+PUT http://localhost:3000/game/665127236c99c56a8b2257dc
 content-type: application/json
 
 {
-    "Name": "Microsoft",
-    "Founded": "1998",
-    "Headquarters": "USA",
-    "President": "Bill Gates",
-    "Website": "microsoft.com"
+    "Name": "The",
+  "Release": "2017",
+  "Director": "Hidemaro",
+  "Composer": "Manaka Kataoka",
+  "Series": "The Legend",
+  "Developer": "Nintendo",
+  "Genre": "Action-Adventure"
   }
 
 
 ### Delete game by id
-DELETE http://localhost:3000/game/66511fbb1fd8371a429ae8e6
+DELETE http://localhost:3000/game/665127236c99c56a8b2257dc
