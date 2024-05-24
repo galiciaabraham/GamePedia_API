@@ -1,0 +1,44 @@
+
+### Test locally Welcome
+GET http://localhost:3000/
+
+### Test locally get all games
+GET http://localhost:3000/game
+
+### Test locally get game by id
+GET http://localhost:3000/game/664958029f675f2a865b4f1a
+
+
+### Test locally get game by name
+GET http://localhost:3000/game/name/Ubisoft
+
+### Create game
+POST http://localhost:3000/game/
+content-type: application/json
+
+  {
+    "Name": "The Legend",
+  "Release": "2017",
+  "Director": "Hidemaro",
+  "Composer": "Manaka Kataoka",
+  "Series": "The Legend",
+  "Developer": "Nintendo",
+  "Genre": "Action-Adventure"
+  }
+
+
+### Update game
+PUT http://localhost:3000/game/66511f39c4fadbb7a2ca490b
+content-type: application/json
+
+{
+    "Name": "Microsoft",
+    "Founded": "1998",
+    "Headquarters": "USA",
+    "President": "Bill Gates",
+    "Website": "microsoft.com"
+  }
+
+
+### Delete game by id
+DELETE http://localhost:3000/game/66511fbb1fd8371a429ae8e6

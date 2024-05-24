@@ -10,16 +10,7 @@ router.use("/review", require("./reviews"));
 
 router.use("/developer", require("./developer"));
 
-router.get("/find-all", (req, res) => {
-  models.reviewModel
-    .find({})
-    .then(function (games) {
-      res.json(games);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-});
+router.use("/game", require("./games"));
 
 // router.get('/game/find-all', gamesController.findAll);
 
