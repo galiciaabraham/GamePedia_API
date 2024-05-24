@@ -14,11 +14,11 @@ GET http://localhost:3000/review/6650254558df2d16e841b666
 GET http://localhost:3000/review/user/1919191919171
 
 ### Create Review
-POST http://localhost:3000/review/new-review
+POST http://localhost:3000/review
 content-type: application/json
 
 {
-    "UserId": 1919191919171,
+    "UserId": 1919191919161,
     "Title": "A bad game",
     "Content": "I have never seen a game so bad",
     "Rating": 1,
@@ -28,11 +28,11 @@ content-type: application/json
 
 
 ### Update review
-PUT http://localhost:3000/review/6650254558df2d16e841b666
+PUT http://localhost:3000/review/665119fdb0bd4713f6f92c61
 content-type: application/json
 
 {
-    "UserId": 1919191919181,
+    "UserId": 1919191919161,
     "Title": "An average game",
     "Content": "I have never seen a game so average",
     "Rating": 5,
@@ -42,6 +42,5 @@ content-type: application/json
 
 
 ### Delete review by id
-DELETE http://localhost:3000/review/66502617b8ce07056d956971
-
+DELETE http://localhost:3000/review/665119fdb0bd4713f6f92c61
 

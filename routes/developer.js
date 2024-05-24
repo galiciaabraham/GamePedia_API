@@ -4,21 +4,21 @@ const router = express.Router();
 const developersController = require("../controllers/developerController");
 
 // Create a new developer
-router.post("/new-developer", developersController.createDeveloper);
+router.post("/", developersController.createDeveloper);
 
 // Update an existing developer
-router.put("/update-developer/:id", developersController.updateDeveloper);
+router.put("/:id", developersController.updateDeveloper);
 
 // Retrieve a developer by their ID
-router.get("/developer/:id", developersController.getSingleDeveloper);
+router.get("/:id", developersController.getSingleDeveloper);
 
 // Retrieve developers by name
-router.get("/developer/:name", developersController.getSingleDeveloperByName);
+router.get("/name/:name", developersController.getSingleDeveloperByName);
 
 // Retrieve a list of all developers
-router.get("/developer", developersController.getAllDevelopers);
+router.get("/", developersController.getAllDevelopers);
 
 // Delete a developer by their ID
-router.delete("/developer/:id", developersController.deleteDeveloper);
+router.delete("/:id", developersController.deleteDeveloper);
 
 module.exports = router;

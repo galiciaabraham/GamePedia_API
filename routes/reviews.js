@@ -1,27 +1,18 @@
-const express = require('express');
-const router = express.Router();
+const router = require("express").Router();
+const reviewController = require("../controllers/reviewController");
 
-const reviewsController = require('../controllers/reviewsController');
+router.get("/", reviewController.getAllReviews);
 
-// Create a new review
-router.post('/new-review', reviewsController.createReview);
+router.get("/:id", reviewController.getReviewById);
 
-// Update an existing review
-router.put('/update-review/:id', reviewsController.updateReview);
+/* router.get("/game/:id", reviewController.getReviewsByGameId); */
 
-// Retrieve a review by its ID
-router.get('/review/:id', reviewsController.getReviewById);
+router.get("/user/:id", reviewController.getReviewsByUserId);
 
-// Retrieve reviews for a specific game by its ID
-router.get('/review/game/:gameId', reviewsController.getReviewsByGameId);
+router.post("/", reviewController.createReview);
 
-// Retrieve reviews for a specific user by their ID
-router.get('/review/user/:userId', reviewsController.getReviewsByUserId);
+router.put("/:id", reviewController.updateReview);
 
-// Retrieve a list of all reviews
-router.get('/review', reviewsController.getAllReviews);
-
-// Delete a review by its ID
-router.delete('/review/:id', reviewsController.deleteReview);
+router.delete("/:id", reviewController.deleteReview);
 
 module.exports = router;

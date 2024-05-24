@@ -6,15 +6,20 @@ router.get("/", (req, res) => {
   res.send("Welcome to Final Project Team 17");
 });
 
-router.use("/reviews", require("./reviews"));
+router.use("/review", require("./reviews"));
 
-router.get('/find-all', (req, res) => {
-  models.reviewModel.find({}).then(function(games) {
-    res.json(games)
-  }).catch(function(error) {
-    console.log(error)
-  })
-})
+router.use("/developer", require("./developer"));
+
+router.get("/find-all", (req, res) => {
+  models.reviewModel
+    .find({})
+    .then(function (games) {
+      res.json(games);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+});
 
 // router.get('/game/find-all', gamesController.findAll);
 
