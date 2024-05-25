@@ -1,25 +1,55 @@
 const express = require("express");
-const utilities = require("../utilities/utilities");
 const router = express.Router();
+const utilities = require("../utilities/utilities");
+const devValidator = require("../utilities/developer-validation");
+
 
 const developersController = require("../controllers/developerController");
 
-// Create a new developer
-router.post("/", developersController.createDeveloper);
-
-// Update an existing developer
-router.put("/:id", developersController.updateDeveloper);
+// Retrieve a list of all developers
+router.get("/", 
+    utilities.handleErrors(
+    developersController.getAllDevelopers
+));
 
 // Retrieve a developer by their ID
-router.get("/:id", developersController.getSingleDeveloper);
+router.get("/:id",
+    devValidator.devSearchByIdParamRule(),
+    devValidator.validationCheck,
+    utilities.handleErrors(
+    developersController.getSingleDeveloper
+));
 
 // Retrieve developers by name
-router.get("/name/:name", developersController.getSingleDeveloperByName);
+router.get("/name/:name", 
+    devValidator.devSearchByNameParamRule(),
+    devValidator.validationCheck,
+    utilities.handleErrors(
+    developersController.getSingleDeveloperByName
+));
 
-// Retrieve a list of all developers
-router.get("/", developersController.getAllDevelopers);
+// Create a new developer
+router.post("/",
+    devValidator.developerValidatorRules(),
+    devValidator.validationCheck,
+    utilities.handleErrors(
+    developersController.createDeveloper
+));
+
+// Update an existing developer
+router.put("/:id",
+    devValidator.developerValidatorRules(),
+    devValidator.validationCheck,
+    utilities.handleErrors(
+    developersController.updateDeveloper
+));
 
 // Delete a developer by their ID
-router.delete("/:id", developersController.deleteDeveloper);
+router.delete("/:id", 
+    devValidator.devSearchByIdParamRule(),
+    devValidator.validationCheck,
+    utilities.handleErrors(
+    developersController.deleteDeveloper
+));
 
 module.exports = router;

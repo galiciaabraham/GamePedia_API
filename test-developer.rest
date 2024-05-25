@@ -1,23 +1,22 @@
+@host = http://localhost:3000
+@Id = 66514a874e90329b7f0a882d
+@devName = Ubisoft
 
-### Test locally Welcome
-GET http://localhost:3000/
+### Test get all developers
+GET {{host}}/developer
 
-### Test locally get all developers
-GET http://localhost:3000/developer
+### Test get developer by id
+GET {{host}}/developer/{{Id}}
 
-### Test locally get developer by id
-GET http://localhost:3000/developer/66511f39c4fadbb7a2ca490b
-
-
-### Test locally get developer by name
-GET http://localhost:3000/developer/name/Ubisoft
+### Test get developer by name
+GET {{host}}/developer/name/{{devName}}
 
 ### Create developer
-POST http://localhost:3000/developer/
+POST {{host}}/developer/
 content-type: application/json
 
   {
-    "Name": "Ubisoft2",
+    "Name": "Ubisoft",
     "Founded": "2020",
     "Headquarters": "Canada",
     "President": "John Denver",
@@ -26,7 +25,7 @@ content-type: application/json
 
 
 ### Update developer
-PUT http://localhost:3000/developer/66511f39c4fadbb7a2ca490b
+PUT {{host}}/developer/{{Id}}
 content-type: application/json
 
 {
@@ -39,4 +38,4 @@ content-type: application/json
 
 
 ### Delete developer by id
-DELETE http://localhost:3000/developer/66511fbb1fd8371a429ae8e6
+DELETE {{host}}/developer/{{Id}}

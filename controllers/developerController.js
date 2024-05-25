@@ -10,14 +10,9 @@ const getAllDevelopers = async (req, res) => {
     })
     .catch(function (error) {
       console.log(error);
-      res.status(500).send("Server Error");
+      res.status(500).send("An error occurred while trying to retrieve developers information.");
     });
 
-  /*   const data = await mainModel.developerModel.find({});
-  data.then((document) => {
-    res.setHeader("Content-Type", "application/json");
-    res.status(200).json(document);
-  }); */
 };
 
 const getSingleDeveloper = async (req, res) => {
@@ -26,17 +21,14 @@ const getSingleDeveloper = async (req, res) => {
   mainModel.developerModel
     .find({ _id: id })
     .then(function (data) {
-      res.setHeader("Content-Type", "application/json");
+      res.setHeader("Content-Type", "application/json");  
       res.status(200).json(data);
     })
     .catch(function (error) {
       console.log(error);
-      res.status(500).send("Server Error");
+      res.status(500).send("An error occurred while trying to retrieve the developer information.");
     });
-  /* data.toArray().then((document) => {
-    res.setHeader("Content-Type", "application/json");
-    res.status(200).json(document[0]);
-  }); */
+
 };
 
 const getSingleDeveloperByName = async (req, res) => {
@@ -50,12 +42,9 @@ const getSingleDeveloperByName = async (req, res) => {
     })
     .catch(function (error) {
       console.log(error);
-      res.status(500).send("Server Error");
+      res.status(500).send("An error occurred while trying to retrieve the developer information.");
     });
-  /*  data.toArray().then((document) => {
-    res.setHeader("Content-Type", "application/json");
-    res.status(200).json(document[0]);
-  }); */
+
 };
 
 const createDeveloper = async (req, res) => {
@@ -68,19 +57,12 @@ const createDeveloper = async (req, res) => {
     Website: req.body.Website,
   };
   const response = await mainModel.developerModel.create(data);
-
-  res.status(200).send("Developer Created!");
-  /* 
-  if (response.acknowledged) {
-    res.status(200);
+  if (response) {
+    res.status(204);
   } else {
-    res
-      .status(500)
-      .json(
-        response.error ||
-          `Some error ocurred while creating data for Developer.`
-      );
-  } */
+    res.status(500).send("An error occurred while trying to create a new developer.");
+  }
+
 };
 
 const updateDeveloper = async (req, res) => {
@@ -97,17 +79,13 @@ const updateDeveloper = async (req, res) => {
     { _id: id },
     data
   );
-  res.status(200).send("Developer Updated!");
-  /*   if (response.modifiedCount > 0) {
-    res.status(204).send();
+
+  if (response) {
+    res.status(204);
   } else {
-    res
-      .status(500)
-      .json(
-        response.error ||
-          `Some error ocurred while updating data from Developer.`
-      );
-  } */
+    res.status(500).send("An error occurred while trying to update the developer information.");
+  }
+
 };
 
 const deleteDeveloper = async (req, res) => {
@@ -115,17 +93,12 @@ const deleteDeveloper = async (req, res) => {
   const id = req.params.id;
   const response = await mainModel.developerModel.deleteOne({ _id: id });
 
-  res.status(200).send("Developer Deleted!");
-  /*  if (response.deletedCount > 0) {
-    res.status(204).send();
+  if (response) {
+    res.status(204);
   } else {
-    res
-      .status(500)
-      .json(
-        response.error ||
-          `Some error ocurred while deleting data from Developer.`
-      );
-  } */
+    res.status(500).send("An error occurred while trying to delete a developer.");
+  }
+
 };
 
 module.exports = {
