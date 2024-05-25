@@ -3,22 +3,22 @@ const router = express.Router();
 
 const publishersController = require("../controllers/publishersController");
 
-// // Create a new publisher
-// router.post('/new-publisher', publishersController.createPublisher);
+// Create a new publisher
+router.post("/new-publisher", publishersController.createPublisher);
 
-// // Update an existing publisher
-// router.put('/update-publisher/:id', publishersController.updatePublisher);
+// Update an existing publisher
+router.put("/update-publisher/:id", publishersController.updatePublisher);
 
-// // Retrieve a publisher by their ID
-// router.get('/publisher/:id', publishersController.getPublisherById);
+// Retrieve a publisher by their ID
+router.get("/:id", publishersController.getPublisherById);
 
-// // Retrieve publishers by name
-// router.get('/publisher/:name', publishersController.getPublisherByName);
+// Retrieve publishers by name
+router.get("/name/:name", publishersController.getPublisherByName);
 
-// // Retrieve a list of all publishers
-// router.get('/publisher', publishersController.getAllPublishers);
+// Retrieve a list of all publishers
+router.get("/", publishersController.getAllPublishers);
 
-// // Delete a publisher by their ID
-// router.delete('/publisher/:id', publishersController.deletePublisher);
+// Delete a publisher by their ID
+router.delete("/:id", publishersController.deletePublisher);
 
 module.exports = router;
