@@ -4,7 +4,8 @@
   "description": "Final project for CSE341 Team 17",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "swagger": "node swagger.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +16,8 @@
     "express": "^4.19.2",
     "express-validator": "^7.1.0",
     "mongoose": "^8.4.0",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.0"
   }
 }

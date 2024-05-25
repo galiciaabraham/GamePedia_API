@@ -30,8 +30,8 @@ router.get("/name/:name",
 
 // Create a new developer
 router.post("/",
-    devValidator.developerValidatorRules(),
-    devValidator.validationCheck,
+    // devValidator.developerValidatorRules(),
+    // devValidator.validationCheck,
     utilities.handleErrors(
     developersController.createDeveloper
 ));

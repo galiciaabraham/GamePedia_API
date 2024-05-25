@@ -54,15 +54,20 @@ const createDeveloper = async (req, res) => {
     Founded: req.body.Founded,
     Headquarters: req.body.Headquarters,
     President: req.body.President,
-    Website: req.body.Website,
+    Website: req.body.Website
   };
-  const response = await mainModel.developerModel.create(data);
-  if (response) {
-    res.status(204);
-  } else {
-    res.status(500).send("An error occurred while trying to create a new developer.");
-  }
-
+  mainModel.developerModel.create(data).then((result) => {
+    res.status(204).send(result);
+  })
+  .catch(function (error) {
+    console.log(error);
+    res
+      .status(500)
+      .send({
+        error:
+          "An error occurred while trying to create a new developer.",
+      });
+  });
 };
 
 const updateDeveloper = async (req, res) => {
@@ -72,33 +77,44 @@ const updateDeveloper = async (req, res) => {
     Founded: req.body.Founded,
     Headquarters: req.body.Headquarters,
     President: req.body.President,
-    Website: req.body.Website,
+    Website: req.body.Website
   };
   const id = req.params.id;
-  const response = await mainModel.developerModel.findByIdAndUpdate(
+  mainModel.developerModel.findByIdAndUpdate(
     { _id: id },
     data
-  );
-
-  if (response) {
-    res.status(204);
-  } else {
-    res.status(500).send("An error occurred while trying to update the developer information.");
-  }
-
+  )
+  .then((result) => {
+    res.status(204).send(result);
+  })
+  .catch(function (error) {
+    console.log(error);
+    res
+      .status(500)
+      .send({
+        error:
+          "An error occurred while trying to update the developer information.",
+      });
+  });
+  
 };
 
 const deleteDeveloper = async (req, res) => {
   //#swagger.tags=["Developer"]
   const id = req.params.id;
-  const response = await mainModel.developerModel.deleteOne({ _id: id });
-
-  if (response) {
-    res.status(204);
-  } else {
-    res.status(500).send("An error occurred while trying to delete a developer.");
-  }
-
+  mainModel.developerModel.deleteOne({ _id: id })
+  .then((result) => {
+    res.status(204).send(result);
+  })
+  .catch(function (error) {
+    console.log(error);
+    res
+      .status(500)
+      .send({
+        error:
+          "An error occurred while trying to delete a developer.",
+      });
+  });
 };
 
 module.exports = {
