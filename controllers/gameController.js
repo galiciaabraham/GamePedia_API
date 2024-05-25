@@ -1,5 +1,4 @@
 const model = require("../model/mongoose");
-const mongoose = require("mongoose");
 
 const gameController = {};
 

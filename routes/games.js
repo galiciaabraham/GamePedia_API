@@ -1,17 +1,41 @@
 const express = require("express");
-const utilities = require("../utilities/utilities");
+const errorHandling = require("../utilities/utilities");
+const validator = require("../utilities/game-validation");
 const router = express.Router();
 
 const gameController = require("../controllers/gameController");
 
-router.get("/", gameController.findAll);
+router.get("/", 
+errorHandling.handleErrors(
+    gameController.findAll
+));
 
-router.get("/:gameId", gameController.findGameById);
+router.get("/:gameId", 
+validator.gameSearchValidator(),
+validator.validate,
+errorHandling.handleErrors(
+    gameController.findGameById
+));
 
-router.post("/", gameController.addGame);
+router.post("/", 
+validator.gameValidator(),
+validator.validate,
+errorHandling.handleErrors(
+    gameController.addGame
+));
 
-router.put("/:gameId", gameController.updateGame);
+router.put("/:gameId", 
+validator.gameValidator(),
+validator.validate,
+errorHandling.handleErrors(
+    gameController.updateGame
+));
 
-router.delete("/:gameId", gameController.deleteGame);
+router.delete("/:gameId", 
+validator.gameSearchValidator(),
+validator.validate,
+errorHandling.handleErrors(
+    gameController.deleteGame
+));
 
 module.exports = router;
