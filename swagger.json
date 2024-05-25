@@ -22,16 +22,6 @@
         }
       }
     },
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
     "/review/": {
       "get": {
         "tags": [
@@ -257,25 +247,72 @@
     },
     "/developer/": {
       "get": {
+        "tags": [
+          "Developer"
+        ],
         "description": "",
+        "produces": [
+          "application/json"
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
       "post": {
+        "tags": [
+          "Developer"
+        ],
         "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Name": {
+                  "example": "any"
+                },
+                "Founded": {
+                  "example": "any"
+                },
+                "Headquarters": {
+                  "example": "any"
+                },
+                "President": {
+                  "example": "any"
+                },
+                "Website": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
     },
     "/developer/{id}": {
       "get": {
+        "tags": [
+          "Developer"
+        ],
         "description": "",
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -285,12 +322,18 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
       "put": {
+        "tags": [
+          "Developer"
+        ],
         "description": "",
         "parameters": [
           {
@@ -298,15 +341,45 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Name": {
+                  "example": "any"
+                },
+                "Founded": {
+                  "example": "any"
+                },
+                "Headquarters": {
+                  "example": "any"
+                },
+                "President": {
+                  "example": "any"
+                },
+                "Website": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
       "delete": {
+        "tags": [
+          "Developer"
+        ],
         "description": "",
         "parameters": [
           {
@@ -317,15 +390,24 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
     },
     "/developer/name/{name}": {
       "get": {
+        "tags": [
+          "Developer"
+        ],
         "description": "",
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "name",
@@ -335,33 +417,89 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
     },
     "/game/": {
       "get": {
+        "tags": [
+          "Games"
+        ],
         "description": "",
+        "produces": [
+          "application/json"
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
       "post": {
+        "tags": [
+          "Games"
+        ],
         "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Name": {
+                  "example": "any"
+                },
+                "Release": {
+                  "example": "any"
+                },
+                "Director": {
+                  "example": "any"
+                },
+                "Composer": {
+                  "example": "any"
+                },
+                "Series": {
+                  "example": "any"
+                },
+                "Developer": {
+                  "example": "any"
+                },
+                "Genre": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
     },
     "/game/{gameId}": {
       "get": {
+        "tags": [
+          "Games"
+        ],
         "description": "",
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "gameId",
@@ -371,12 +509,18 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
       "put": {
+        "tags": [
+          "Games"
+        ],
         "description": "",
         "parameters": [
           {
@@ -384,15 +528,51 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Name": {
+                  "example": "any"
+                },
+                "Release": {
+                  "example": "any"
+                },
+                "Director": {
+                  "example": "any"
+                },
+                "Composer": {
+                  "example": "any"
+                },
+                "Series": {
+                  "example": "any"
+                },
+                "Developer": {
+                  "example": "any"
+                },
+                "Genre": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
       "delete": {
+        "tags": [
+          "Games"
+        ],
         "description": "",
         "parameters": [
           {
@@ -403,8 +583,11 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }

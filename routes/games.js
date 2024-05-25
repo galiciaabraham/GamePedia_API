@@ -5,37 +5,44 @@ const router = express.Router();
 
 const gameController = require("../controllers/gameController");
 
-router.get("/", 
-errorHandling.handleErrors(
-    gameController.findAll
-));
+router.get("/", errorHandling.handleErrors(gameController.findAll));
 
-router.get("/:gameId", 
-validator.gameSearchValidator(),
-validator.validate,
-errorHandling.handleErrors(
-    gameController.findGameById
-));
+/* router.get("/", gameController.findAll); */
 
-router.post("/", 
-validator.gameValidator(),
-validator.validate,
-errorHandling.handleErrors(
-    gameController.addGame
-));
+router.get(
+  "/:gameId",
+  validator.gameSearchValidator(),
+  validator.validate,
+  errorHandling.handleErrors(gameController.findGameById)
+);
+/* 
+router.get("/:gameId", gameController.findGameById); */
 
-router.put("/:gameId", 
-validator.gameValidator(),
-validator.validate,
-errorHandling.handleErrors(
-    gameController.updateGame
-));
+router.post(
+  "/",
+  validator.gameValidator(),
+  validator.validate,
+  errorHandling.handleErrors(gameController.addGame)
+);
 
-router.delete("/:gameId", 
-validator.gameSearchValidator(),
-validator.validate,
-errorHandling.handleErrors(
-    gameController.deleteGame
-));
+/* router.post("/", gameController.addGame); */
+
+router.put(
+  "/:gameId",
+  validator.gameValidator(),
+  validator.validate,
+  errorHandling.handleErrors(gameController.updateGame)
+);
+
+/* router.put("/:gameId", gameController.updateGame); */
+
+router.delete(
+  "/:gameId",
+  validator.gameSearchValidator(),
+  validator.validate,
+  errorHandling.handleErrors(gameController.deleteGame)
+);
+
+/* router.delete("/:gameId", gameController.deleteGame); */
 
 module.exports = router;
