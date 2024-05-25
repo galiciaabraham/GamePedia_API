@@ -5,7 +5,7 @@ router.get("/", reviewController.getAllReviews);
 
 router.get("/:id", reviewController.getReviewById);
 
-/* router.get("/game/:id", reviewController.getReviewsByGameId); */
+router.get("/game/:id", reviewController.getReviewsByGameId);
 
 router.get("/user/:id", reviewController.getReviewsByUserId);
 

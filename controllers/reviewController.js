@@ -35,7 +35,7 @@ const getReviewById = async (req, res) => {
   }
 };
 
-/* const getReviewsByGameId = async (req, res) => {
+const getReviewsByGameId = async (req, res) => {
   // #swagger.tags=["Reviews"]
   const gameId = req.params.id;
   try {
@@ -52,7 +52,7 @@ const getReviewById = async (req, res) => {
     console.log("Error while trying to fetch review", error);
     res.status(500).send("Server Error");
   }
-}; */
+};
 
 const getReviewsByUserId = async (req, res) => {
   // #swagger.tags=["Reviews"]
@@ -146,6 +146,6 @@ module.exports = {
   createReview,
   deleteReview,
   updateReview,
-  //getReviewsByGameId,
+  getReviewsByGameId,
   getReviewsByUserId,
 };

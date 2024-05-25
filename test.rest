@@ -9,6 +9,11 @@ GET http://localhost:3000/review
 ### Test locally get review by id
 GET http://localhost:3000/review/6650254558df2d16e841b666
 
+### Test locally get review by gameId
+GET http://localhost:3000/review/game/664958029f675f2a865b4f1a
+
+
+
 
 ### Test locally get review by userId
 GET http://localhost:3000/review/user/1919191919171
