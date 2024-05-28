@@ -1,0 +1,41 @@
+@host = http://localhost:3000
+@Id = 66520bd87995e7dad49fd48d
+@publisherName = Microsoft
+
+### Test get all publisher
+GET {{host}}/publisher/
+
+### Test get publisher by id
+GET {{host}}/publisher/{{Id}}
+
+### Test get publisher by name
+GET {{host}}/publisher/name/{{publisherName}}
+
+### Create publisher
+POST {{host}}/publisher/new-publisher/
+content-type: application/json
+
+  {
+    "Name": "Ubisoft",
+    "Founded": "2020",
+    "Headquarters": "Canada",
+    "President": "John Denver",
+    "Website": "ubisoft.com"
+  }
+
+
+### Update publisher
+PUT {{host}}/publisher/update-publisher/{{Id}}
+content-type: application/json
+
+{
+    "Name": "Microsoft",
+    "Founded": "1998",
+    "Headquarters": "USA",
+    "President": "Bill Gates",
+    "Website": "microsoft.com"
+  }
+
+
+### Delete publisher by id
+DELETE {{host}}/publisher/{{Id}}
