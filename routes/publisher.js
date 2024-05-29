@@ -1,13 +1,22 @@
 const express = require("express");
 const router = express.Router();
+const auth = require("../utilities/authenticate");
 
 const publishersController = require("../controllers/publishersController");
 
 // Create a new publisher
-router.post("/new-publisher", publishersController.createPublisher);
+router.post(
+  "/new-publisher",
+  auth.isAthenticated,
+  publishersController.createPublisher
+);
 
 // Update an existing publisher
-router.put("/update-publisher/:id", publishersController.updatePublisher);
+router.put(
+  "/update-publisher/:id",
+  auth.isAthenticated,
+  publishersController.updatePublisher
+);
 
 // Retrieve a publisher by their ID
 router.get("/:id", publishersController.getPublisherById);
@@ -19,6 +28,10 @@ router.get("/name/:name", publishersController.getPublisherByName);
 router.get("/", publishersController.getAllPublishers);
 
 // Delete a publisher by their ID
-router.delete("/:id", publishersController.deletePublisher);
+router.delete(
+  "/:id",
+  auth.isAthenticated,
+  publishersController.deletePublisher
+);
 
 module.exports = router;

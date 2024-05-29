@@ -2,6 +2,7 @@ const express = require("express");
 const errorHandling = require("../utilities/utilities");
 const validator = require("../utilities/game-validation");
 const router = express.Router();
+const auth = require("../utilities/authenticate");
 
 const gameController = require("../controllers/gameController");
 
@@ -20,6 +21,7 @@ router.get("/:gameId", gameController.findGameById); */
 
 router.post(
   "/",
+  auth.isAthenticated,
   validator.gameValidator(),
   validator.validate,
   errorHandling.handleErrors(gameController.addGame)
@@ -29,6 +31,7 @@ router.post(
 
 router.put(
   "/:gameId",
+  auth.isAthenticated,
   validator.gameValidator(),
   validator.validate,
   errorHandling.handleErrors(gameController.updateGame)
@@ -38,6 +41,7 @@ router.put(
 
 router.delete(
   "/:gameId",
+  auth.isAthenticated,
   validator.gameSearchValidator(),
   validator.validate,
   errorHandling.handleErrors(gameController.deleteGame)
