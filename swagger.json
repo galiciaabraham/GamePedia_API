@@ -486,39 +486,21 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
+            "description": "Example of req.body",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "Name": {
-                  "example": "any"
-                },
-                "Release": {
-                  "example": "any"
-                },
-                "Director": {
-                  "example": "any"
-                },
-                "Composer": {
-                  "example": "any"
-                },
-                "Series": {
-                  "example": "any"
-                },
-                "Developer": {
-                  "example": "any"
-                },
-                "Genre": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/game"
             }
           }
         ],
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized if you haven't authenticated with OAuth - Github"
           },
           "500": {
             "description": "Internal Server Error"
@@ -564,45 +546,21 @@
         ],
         "parameters": [
           {
-            "name": "gameId",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
             "in": "body",
+            "name": "body",
+            "description": "Example of req.body",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "Name": {
-                  "example": "any"
-                },
-                "Release": {
-                  "example": "any"
-                },
-                "Director": {
-                  "example": "any"
-                },
-                "Composer": {
-                  "example": "any"
-                },
-                "Series": {
-                  "example": "any"
-                },
-                "Developer": {
-                  "example": "any"
-                },
-                "Genre": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/game"
             }
           }
         ],
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized if you haven't authenticated with OAuth - Github"
           },
           "500": {
             "description": "Internal Server Error"
@@ -630,6 +588,9 @@
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized if you haven't authenticated with OAuth - Github"
           },
           "500": {
             "description": "Internal Server Error"
