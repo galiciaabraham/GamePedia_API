@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const utilities = require("../utilities/utilities");
 const devValidator = require("../utilities/developer-validation");
+const auth = require("../utilities/authenticate");
 
 const developersController = require("../controllers/developerController");
 
@@ -33,6 +34,7 @@ router.get(
 // Create a new developer
 router.post(
   "/",
+  auth.isAthenticated,
   devValidator.developerValidatorRules(),
   devValidator.validationCheck,
   utilities.handleErrors(developersController.createDeveloper)
@@ -43,6 +45,7 @@ router.post(
 // Update an existing developer
 router.put(
   "/:id",
+  auth.isAthenticated,
   devValidator.developerValidatorRules(),
   devValidator.validationCheck,
   utilities.handleErrors(developersController.updateDeveloper)
@@ -53,6 +56,7 @@ router.put(
 // Delete a developer by their ID
 router.delete(
   "/:id",
+  auth.isAthenticated,
   devValidator.devSearchByIdParamRule(),
   devValidator.validationCheck,
   utilities.handleErrors(developersController.deleteDeveloper)

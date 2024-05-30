@@ -5,7 +5,7 @@
     "description": "An API to provide information about games, developers, publishers and reviews in Json objects",
     "version": "1.0.0"
   },
-  "host": "cse341-final-project-team17.onrender.com",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
     "https",
@@ -45,6 +45,11 @@
           "Reviews"
         ],
         "description": "",
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "body",
@@ -118,6 +123,11 @@
           "Reviews"
         ],
         "description": "",
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -167,6 +177,11 @@
           "Reviews"
         ],
         "description": "",
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -268,6 +283,11 @@
           "Developer"
         ],
         "description": "",
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "body",
@@ -335,6 +355,11 @@
           "Developer"
         ],
         "description": "",
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -381,6 +406,11 @@
           "Developer"
         ],
         "description": "",
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -449,6 +479,11 @@
           "Games"
         ],
         "description": "",
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "body",
@@ -522,6 +557,11 @@
           "Games"
         ],
         "description": "",
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "gameId",
@@ -574,6 +614,11 @@
           "Games"
         ],
         "description": "",
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "gameId",
@@ -598,6 +643,11 @@
           "Publisher"
         ],
         "description": "",
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "body",
@@ -640,6 +690,11 @@
           "Publisher"
         ],
         "description": "",
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -713,6 +768,11 @@
           "Publisher"
         ],
         "description": "",
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -776,6 +836,54 @@
           }
         }
       }
+    }
+  },
+  "definitions": {
+    "game": {
+      "type": "object",
+      "properties": {
+        "Name": {
+          "type": "string",
+          "example": "Game Name"
+        },
+        "Release": {
+          "type": "string",
+          "example": "2022"
+        },
+        "Director": {
+          "type": "string",
+          "example": "Director Name"
+        },
+        "Composer": {
+          "type": "string",
+          "example": "Composer Name"
+        },
+        "Series": {
+          "type": "string",
+          "example": "Series Name"
+        },
+        "Developer": {
+          "type": "string",
+          "example": "Developer Name"
+        },
+        "Genre": {
+          "type": "string",
+          "example": "Genre Name"
+        },
+        "Id": {
+          "type": "integer",
+          "example": 4
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "OAuth2": {
+      "type": "oauth2",
+      "description": "This API uses OAuth 2 with the implicit grant flow.",
+      "flow": "implicit",
+      "authorizationUrl": "http://localhost:3000/login",
+      "scopes": {}
     }
   }
 }
