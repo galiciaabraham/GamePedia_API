@@ -9,7 +9,7 @@ describe('Testing mongoose game controller', () => {
     test('should return all documents in games collection', async () => {
         const _games = [
             {
-                _id: new ObjectId("664fdf313e6b236e47dd0c76"),
+                _id: "664fdf313e6b236e47dd0c76",
                 Name: "The Legend",
                 Release: "2017",
                 Director: "Hidemaro",
@@ -19,7 +19,7 @@ describe('Testing mongoose game controller', () => {
                 Genre: "Action-Adventure"
             },
             {
-                _id: new ObjectId("6651345e22e8af9ca812ae56"),
+                _id: "6651345e22e8af9ca812ae56",
                 Name: "Super Mario Kart",
                 Release: "2020",
                 Director: "Kenta Motokura",
@@ -36,6 +36,7 @@ describe('Testing mongoose game controller', () => {
         const res = new TestResponse();
 
         await gameController.findAll(req, res);
-        expect(res.statusCode).toBe(200);        
+        expect(res.statusCode).toBe(200);      
+        expect(JSON.parse(JSON.stringify(res.data))).toMatchObject(_games);  
     });
 });
