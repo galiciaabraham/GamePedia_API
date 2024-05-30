@@ -44,18 +44,16 @@ gameController.addGame = async (req, res) => {
     Developer: req.body.Developer,
     Genre: req.body.Genre,
   };
-  model.gameModel
-    .create(newGame)
-    .then((result) => {
-      res.status(204).send(result);
-    })
-    .catch(function (error) {
-      console.log(error);
+  try {
+    const result = await model.gameModel.create(newGame)
+    res.status(204);
+    res.send(result);
+  } catch {(function (error) {
       res.status(500).send({
         error:
           "An error occurred adding your game, please try again or contact support.",
       });
-    });
+    })};
 };
 
 gameController.updateGame = async (req, res) => {
