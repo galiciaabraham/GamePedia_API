@@ -4,18 +4,15 @@ const gameController = {};
 
 gameController.findAll = async (req, res) => {
   // #swagger.tags=["Games"]
-  model.gameModel
-    .find({})
-    .then(function (games) {
-      res.setHeader("Content-Type", "application/json");
-      res.status(200).send(games);
-    })
-    .catch(function (error) {
-      res.status(500).send({
-        error:
-          "Error retreiving all games, please try again or contact support.",
-      });
+  try {
+    const games = await model.gameModel.find({});
+    res.setHeader("Content-Type", "application/json");
+    res.status(200).send(games);
+} catch (error) {
+    res.status(500).send({
+        error: "Error retrieving all games, please try again or contact support."
     });
+}
 };
 
 gameController.findGameById = async (req, res) => {
