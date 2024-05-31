@@ -1,19 +1,27 @@
+
 const router = require("express").Router();
 const reviewController = require("../controllers/reviewController");
 const auth = require("../utilities/authenticate");
+const errorHandling = require("../utilities/utilities");
+const validator = require("../utilities/review-validation");
 
-router.get("/", reviewController.getAllReviews);
 
-router.get("/:id", reviewController.getReviewById);
+router.get("/", errorHandling.handleErrors(reviewController.getAllReviews));
 
-router.get("/game/:id", reviewController.getReviewsByGameId);
+router.get("/:id", validator.reviewSearchValidator(), validator.validate, errorHandling.handleErrors(reviewController.getReviewById));
 
-router.get("/user/:id", reviewController.getReviewsByUserId);
+router.get("/game/:id", validator.reviewSearchValidator(), validator.validate,  errorHandling.handleErrors(reviewController.getReviewsByGameId));
 
-router.post("/", auth.isAthenticated, reviewController.createReview);
+router.get("/user/:id", validator.reviewSearchValidator(), validator.validate, errorHandling.handleErrors(reviewController.getReviewsByUserId));
 
-router.put("/:id", auth.isAthenticated, reviewController.updateReview);
+router.post("/", auth.isAthenticated, validator.reviewValidator(), validator.validate,  errorHandling.handleErrors(reviewController.createReview));
 
-router.delete("/:id", auth.isAthenticated, reviewController.deleteReview);
+router.put("/:id", auth.isAthenticated, validator.reviewSearchValidator(), validator.validate, validator.reviewValidator(), validator.validate, errorHandling.handleErrors(reviewController.updateReview));
+
+router.delete("/:id", auth.isAthenticated, validator.reviewSearchValidator(), validator.validate,  errorHandling.handleErrors(reviewController.deleteReview));
+
+
 
 module.exports = router;
+
+
