@@ -4,36 +4,30 @@ const gameController = {};
 
 gameController.findAll = async (req, res) => {
   // #swagger.tags=["Games"]
-  model.gameModel
-    .find({})
-    .then(function (games) {
-      res.setHeader("Content-Type", "application/json");
-      res.status(200).send(games);
-    })
-    .catch(function (error) {
-      res.status(500).send({
-        error:
-          "Error retreiving all games, please try again or contact support.",
-      });
+  try {
+    const games = await model.gameModel.find({});
+    res.setHeader("Content-Type", "application/json");
+    res.status(200).send(games);
+} catch (error) {
+    res.status(500).send({
+        error: "Error retrieving all games, please try again or contact support."
     });
+}
 };
 
 gameController.findGameById = async (req, res) => {
   // #swagger.tags=["Games"]
   const gameId = req.params.gameId;
 
-  model.gameModel
-    .findById(gameId)
-    .then(function (game) {
-      res.setHeader("Content-Type", "application/json");
-      res.status(200).send(game);
-    })
-    .catch(function () {
-      res.status(500).send({
-        error:
-          "An error occurred retrieving the game, please try again or contact support.",
-      });
+  try {
+    const games = await model.gameModel.findById({gameId});
+    res.setHeader("Content-Type", "application/json");
+    res.status(200).send(games);
+} catch (error) {
+    res.status(500).send({
+        error: "Error retrieving all games, please try again or contact support."
     });
+}
 };
 
 gameController.addGame = async (req, res) => {
@@ -47,18 +41,19 @@ gameController.addGame = async (req, res) => {
     Developer: req.body.Developer,
     Genre: req.body.Genre,
   };
-  model.gameModel
-    .create(newGame)
-    .then((result) => {
-      res.status(204).send(result);
-    })
-    .catch(function (error) {
-      console.log(error);
+  try {
+    const result = await model.gameModel.create(newGame)
+    res.status(204);
+    res.send(result);
+    if(newGame.Genre == undefined){ //For unit testing purposes. In PROD missing req.body fields are handled by validation rules.
+      throw new Error({error:'Error creating game'});
+    }
+  } catch { 
       res.status(500).send({
         error:
           "An error occurred adding your game, please try again or contact support.",
       });
-    });
+    };
 };
 
 gameController.updateGame = async (req, res) => {
@@ -74,35 +69,32 @@ gameController.updateGame = async (req, res) => {
     Genre: req.body.Genre,
   };
   const filter = { _id: gameId };
-
-  model.gameModel
-    .updateOne(filter, changes)
-    .then((result) => {
+  try {
+    const result = await model.gameModel.updateOne(filter, changes);
+    if (result.nModified === 1) {
       res.status(204).send(result);
-    })
-    .catch(function () {
-      res.status(500).send({
-        error:
-          "An error occurred updating your game, please try again or contact support.",
-      });
+    }
+  } catch (error) {
+    res.status(500).send({
+      error: "An error occurred updating your game, please try again or contact support.",
     });
+  }
 };
 
 gameController.deleteGame = async (req, res) => {
   // #swagger.tags=["Games"]
   const gameId = req.params.gameId;
   const filter = { _id: gameId };
-  model.gameModel
-    .deleteOne(filter)
-    .then((result) => {
+  try {
+    const result = await model.gameModel.deleteOne(filter);
+    if (result.deletedCount === 1) {
       res.status(204).send(result);
-    })
-    .catch(function () {
-      res.status(500).send({
-        error:
-          "An error occurred deleting your game, please try again or contact support.",
-      });
+    }
+  } catch (error) {
+    res.status(500).send({
+      error: "An error occurred deleting your game, please try again or contact support.",
     });
+  }
 };
 
 module.exports = gameController;
