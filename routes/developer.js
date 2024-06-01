@@ -39,8 +39,8 @@ router.post(
   devValidator.validationCheck,
   utilities.handleErrors(developersController.createDeveloper)
 );
-
-/* router.post("/", developersController.createDeveloper); */
+/* 
+router.post("/", developersController.createDeveloper); */
 
 // Update an existing developer
 router.put(
@@ -50,8 +50,8 @@ router.put(
   devValidator.validationCheck,
   utilities.handleErrors(developersController.updateDeveloper)
 );
-
-/* router.put("/:id", developersController.updateDeveloper); */
+/* 
+router.put("/:id", developersController.updateDeveloper); */
 
 // Delete a developer by their ID
 router.delete(

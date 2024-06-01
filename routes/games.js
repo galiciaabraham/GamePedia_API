@@ -16,8 +16,8 @@ router.get(
   validator.validate,
   errorHandling.handleErrors(gameController.findGameById)
 );
-/* 
-router.get("/:gameId", gameController.findGameById); */
+
+/* router.get("/:gameId", gameController.findGameById); */
 
 router.post(
   "/",

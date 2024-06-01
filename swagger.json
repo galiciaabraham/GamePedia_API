@@ -22,21 +22,42 @@
         }
       }
     },
+    "/api-docs": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/login": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/logout": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/review/": {
       "get": {
-        "tags": [
-          "Reviews"
-        ],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
+          "default": {
+            "description": ""
           }
         }
       },
@@ -80,6 +101,9 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "OK"
+          },
           "204": {
             "description": "No Content"
           },
@@ -110,65 +134,21 @@
           "200": {
             "description": "OK"
           },
-          "404": {
-            "description": "Not Found"
-          },
           "500": {
             "description": "Internal Server Error"
           }
         }
       },
       "put": {
-        "tags": [
-          "Reviews"
-        ],
         "description": "",
         "security": [
           {
             "OAuth2": []
           }
         ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "UserId": {
-                  "example": "any"
-                },
-                "Title": {
-                  "example": "any"
-                },
-                "Content": {
-                  "example": "any"
-                },
-                "Rating": {
-                  "example": "any"
-                },
-                "Date": {
-                  "example": "any"
-                },
-                "Verified": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
         "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "500": {
-            "description": "Internal Server Error"
+          "default": {
+            "description": ""
           }
         }
       },
@@ -486,21 +466,42 @@
         ],
         "parameters": [
           {
-            "in": "body",
             "name": "body",
-            "description": "Example of req.body",
-            "required": true,
+            "in": "body",
             "schema": {
-              "$ref": "#/definitions/game"
+              "type": "object",
+              "properties": {
+                "Name": {
+                  "example": "any"
+                },
+                "Release": {
+                  "example": "any"
+                },
+                "Director": {
+                  "example": "any"
+                },
+                "Composer": {
+                  "example": "any"
+                },
+                "Series": {
+                  "example": "any"
+                },
+                "Developer": {
+                  "example": "any"
+                },
+                "Genre": {
+                  "example": "any"
+                }
+              }
             }
           }
         ],
         "responses": {
+          "200": {
+            "description": "OK"
+          },
           "204": {
             "description": "No Content"
-          },
-          "401": {
-            "description": "Unauthorized if you haven't authenticated with OAuth - Github"
           },
           "500": {
             "description": "Internal Server Error"
@@ -546,21 +547,45 @@
         ],
         "parameters": [
           {
-            "in": "body",
-            "name": "body",
-            "description": "Example of req.body",
+            "name": "gameId",
+            "in": "path",
             "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
             "schema": {
-              "$ref": "#/definitions/game"
+              "type": "object",
+              "properties": {
+                "Name": {
+                  "example": "any"
+                },
+                "Release": {
+                  "example": "any"
+                },
+                "Director": {
+                  "example": "any"
+                },
+                "Composer": {
+                  "example": "any"
+                },
+                "Series": {
+                  "example": "any"
+                },
+                "Developer": {
+                  "example": "any"
+                },
+                "Genre": {
+                  "example": "any"
+                }
+              }
             }
           }
         ],
         "responses": {
           "204": {
             "description": "No Content"
-          },
-          "401": {
-            "description": "Unauthorized if you haven't authenticated with OAuth - Github"
           },
           "500": {
             "description": "Internal Server Error"
@@ -588,9 +613,6 @@
         "responses": {
           "204": {
             "description": "No Content"
-          },
-          "401": {
-            "description": "Unauthorized if you haven't authenticated with OAuth - Github"
           },
           "500": {
             "description": "Internal Server Error"
@@ -799,51 +821,12 @@
       }
     }
   },
-  "definitions": {
-    "game": {
-      "type": "object",
-      "properties": {
-        "Name": {
-          "type": "string",
-          "example": "Game Name"
-        },
-        "Release": {
-          "type": "string",
-          "example": "2022"
-        },
-        "Director": {
-          "type": "string",
-          "example": "Director Name"
-        },
-        "Composer": {
-          "type": "string",
-          "example": "Composer Name"
-        },
-        "Series": {
-          "type": "string",
-          "example": "Series Name"
-        },
-        "Developer": {
-          "type": "string",
-          "example": "Developer Name"
-        },
-        "Genre": {
-          "type": "string",
-          "example": "Genre Name"
-        },
-        "Id": {
-          "type": "integer",
-          "example": 4
-        }
-      }
-    }
-  },
   "securityDefinitions": {
     "OAuth2": {
       "type": "oauth2",
       "description": "This API uses OAuth 2 with the implicit grant flow.",
       "flow": "implicit",
-      "authorizationUrl": "http://localhost:3000/login",
+      "authorizationUrl": "https://cse341-final-project-team17.onrender.com/login",
       "scopes": {}
     }
   }
