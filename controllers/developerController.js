@@ -30,11 +30,9 @@ const getSingleDeveloper = async (req, res) => {
       res.status(200).json(data);
     })
     .catch(function (error) {
-      console.log(error);
       res.status(500).send("An error occurred while trying to retrieve the developer information.");
     });
   } catch (error) {
-    console.log(error);
     res.status(500).send("An error occurred while trying to retrieve the developer information.");
   }
   
@@ -52,11 +50,9 @@ const getSingleDeveloperByName = async (req, res) => {
       res.status(200).json(data);
     })
     .catch(function (error) {
-      console.log(error);
       res.status(500).send("An error occurred while trying to retrieve the developer information.");
     });
   } catch (error) {
-    console.log(error);
     res.status(500).send("An error occurred while trying to retrieve the developer information.");
   }
   
@@ -76,7 +72,6 @@ const createDeveloper = async (req, res) => {
     res.status(204).send(result);
   })
   .catch(function (error) {
-    console.log(error);
     res
       .status(500)
       .send({
@@ -104,7 +99,6 @@ const updateDeveloper = async (req, res) => {
     res.status(204).send(result);
   })
   .catch(function (error) {
-    console.log(error);
     res
       .status(500)
       .send({
@@ -123,7 +117,6 @@ const deleteDeveloper = async (req, res) => {
     res.status(204).send(result);
   })
   .catch(function (error) {
-    console.log(error);
     res
       .status(500)
       .send({

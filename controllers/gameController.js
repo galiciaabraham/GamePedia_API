@@ -20,12 +20,12 @@ gameController.findGameById = async (req, res) => {
   const gameId = req.params.gameId;
 
   try {
-    const games = await model.gameModel.findById({gameId});
+    const games = await model.gameModel.findById(gameId);
     res.setHeader("Content-Type", "application/json");
     res.status(200).send(games);
 } catch (error) {
     res.status(500).send({
-        error: "Error retrieving all games, please try again or contact support."
+        error: "Error retrieving this game, please try again or contact support."
     });
 }
 };

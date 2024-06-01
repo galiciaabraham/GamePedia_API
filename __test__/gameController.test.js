@@ -258,7 +258,6 @@ describe('Testing mongoose game controller function that deletes an existing gam
         const res = new TestResponse();
 
         await gameController.deleteGame(req, res);
-        console.log(res.data);
         expect(res.data).toEqual({ error: 'An error occurred deleting your game, please try again or contact support.' } )
         expect(res.statusCode).toBe(500);
     });

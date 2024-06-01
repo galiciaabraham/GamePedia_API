@@ -19,12 +19,12 @@ const getReviewById = async (req, res) => {
   // #swagger.tags=["Reviews"]
   const reviewId = req.params.id;
   try {
-    const review = await model.reviewModel.findById({ reviewId });
+    const review = await model.reviewModel.findById( reviewId );
 
     res.setHeader("Content-Type", "application/json");
     res.status(200).json(review);
   } catch (error) {
-    console.log("Error while trying to fetch review", error);
+    //console.log("Error while trying to fetch review", error);
     res.status(500).send("Server Error");
   }
 };
@@ -43,7 +43,7 @@ const getReviewsByGameId = async (req, res) => {
     res.setHeader("Content-Type", "application/json");
     res.status(200).json(reviews);
   } catch (error) {
-    console.log("Error while trying to fetch review", error);
+    //console.log("Error while trying to fetch review", error);
     res.status(500).send("Server Error");
   }
 };
@@ -62,7 +62,7 @@ const getReviewsByUserId = async (req, res) => {
     res.setHeader("Content-Type", "application/json");
     res.status(200).json(reviews);
   } catch (error) {
-    console.log("Error while trying to fetch review", error);
+    //console.log("Error while trying to fetch review", error);
     res.status(500).send("Server Error");
   }
 };
