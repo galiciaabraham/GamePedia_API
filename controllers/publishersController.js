@@ -4,18 +4,16 @@ const publishersController = {};
 
 publishersController.getAllPublishers = async (req, res) => {
   //#swagger.tags=["Publisher"]
-  model.publisherModel
-    .find({})
-    .then(function (publishers) {
-      res.setHeader("Content-Type", "application/json");
-      res.status(200).send(publishers);
-    })
-    .catch(function (error) {
-      res.status(500).send({
-        error:
-          "Error retreiving all publishers, please try again or contact support.",
-      });
+  try {
+    const publishers = await model.publisherModel.find({});
+    res.setHeader("Content-Type", "application/json");
+    res.status(200).send(publishers);
+  } catch (error) {
+    res.status(500).send({
+      error:
+        "Error retrieving all publishers, please try again or contact support.",
     });
+  }
 };
 
 publishersController.createPublisher = async (req, res) => {
@@ -44,19 +42,16 @@ publishersController.createPublisher = async (req, res) => {
 publishersController.getPublisherById = async (req, res) => {
   // #swagger.tags=["Publisher"]
   const publisherId = req.params.id;
-
-  model.publisherModel
-    .findById(publisherId)
-    .then(function (publishers) {
-      res.setHeader("Content-Type", "application/json");
-      res.status(200).send(publishers);
-    })
-    .catch(function (error) {
-      res.status(500).send({
-        error:
-          "An error occurred retrieving the game, please try again or contact support.",
-      });
+  try {
+    const publishers = await model.publisherModel.findById(publisherId);
+    res.setHeader("Content-Type", "application/json");
+    res.status(200).send(publishers);
+  } catch (error) {
+    res.status(500).send({
+      error:
+        "An error occurred retrieving the game, please try again or contact support.",
     });
+  }
 };
 
 publishersController.updatePublisher = async (req, res) => {
@@ -89,19 +84,16 @@ publishersController.updatePublisher = async (req, res) => {
 publishersController.getPublisherByName = async (req, res) => {
   // #swagger.tags=["Publisher"]
   const publisherName = req.params.name;
-
-  model.publisherModel
-    .findOne({ Name: publisherName })
-    .then(function (publisher) {
-      res.setHeader("Content-Type", "application/json");
-      res.status(200).send(publisher);
-    })
-    .catch(function () {
-      res.status(500).send({
-        error:
-          "An error occurred retrieving the publisher, please try again or contact support.",
-      });
+  try {
+    const publishers = await model.publisherModel.findOne(publisherName);
+    res.setHeader("Content-Type", "application/json");
+    res.status(200).send(publishers);
+  } catch (error) {
+    res.status(500).send({
+      error:
+        "An error occurred retrieving the publisher, please try again or contact support.",
     });
+  }
 };
 
 publishersController.deletePublisher = async (req, res) => {
