@@ -22,9 +22,7 @@ router.get("/:id", reviewController.getReviewById);
   errorHandling.handleErrors(reviewController.getReviewsByGameId)
 ); */
 
-router.get(
-  "/game/:id",(reviewController.getReviewsByGameId
-);
+router.get("/game/:id", reviewController.getReviewsByGameId);
 
 /* router.get(
   "/user/:id",
@@ -32,9 +30,7 @@ router.get(
   errorHandling.handleErrors(reviewController.getReviewsByUserId)
 ); */
 
-router.get(
-  "/user/:id",reviewController.getReviewsByUserId
-);
+router.get("/user/:id", reviewController.getReviewsByUserId);
 
 /* router.post(
   "/",
@@ -54,9 +50,7 @@ router.post("/", reviewController.createReview);
   errorHandling.handleErrors(reviewController.updateReview)
 ); */
 
-router.put(
-  "/:id",reviewController.updateReview
-);
+router.put("/:id", reviewController.updateReview);
 
 /* router.delete(
   "/:id",
