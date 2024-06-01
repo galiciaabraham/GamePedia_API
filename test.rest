@@ -42,7 +42,8 @@ content-type: application/json
     "Content": "I have never seen a game so average",
     "Rating": 5,
     "Date": "5/21/2024",
-    "Verified": "True"
+    "Verified": "True",
+    "GameId": "664958029f675f2a865b4f1a"
   }
 
 
