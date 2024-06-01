@@ -27,7 +27,6 @@ router.put(
 // Retrieve a publisher by their ID
 router.get(
   "/:id",
-  validator.publisherSearchValidator(),
   validator.validate,
   errorHandling.handleErrors(publishersController.getPublisherById)
 );
