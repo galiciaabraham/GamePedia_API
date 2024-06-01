@@ -6,47 +6,47 @@ const auth = require("../utilities/authenticate");
 
 const gameController = require("../controllers/gameController");
 
-/* router.get("/", errorHandling.handleErrors(gameController.findAll)); */
+router.get("/", errorHandling.handleErrors(gameController.findAll));
 
-router.get("/", gameController.findAll);
+/* router.get("/", gameController.findAll); */
 
-/* router.get(
+router.get(
   "/:gameId",
   validator.gameSearchValidator(),
   validator.validate,
   errorHandling.handleErrors(gameController.findGameById)
-); */
+);
 
-router.get("/:gameId", gameController.findGameById);
+/* router.get("/:gameId", gameController.findGameById); */
 
-/* router.post(
+router.post(
   "/",
   auth.isAthenticated,
   validator.gameValidator(),
   validator.validate,
   errorHandling.handleErrors(gameController.addGame)
-); */
+);
 
-router.post("/", gameController.addGame);
+/* router.post("/", gameController.addGame); */
 
-/* router.put(
+router.put(
   "/:gameId",
   auth.isAthenticated,
   validator.gameValidator(),
   validator.validate,
   errorHandling.handleErrors(gameController.updateGame)
-); */
+);
 
-router.put("/:gameId", gameController.updateGame);
+/* router.put("/:gameId", gameController.updateGame); */
 
-/* router.delete(
+router.delete(
   "/:gameId",
   auth.isAthenticated,
   validator.gameSearchValidator(),
   validator.validate,
   errorHandling.handleErrors(gameController.deleteGame)
-); */
-
-router.delete("/:gameId", gameController.deleteGame);
+);
+/* 
+router.delete("/:gameId", gameController.deleteGame); */
 
 module.exports = router;

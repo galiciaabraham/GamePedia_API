@@ -45,6 +45,11 @@
           "Reviews"
         ],
         "description": "",
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "body",
@@ -118,6 +123,11 @@
           "Reviews"
         ],
         "description": "",
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -167,6 +177,11 @@
           "Reviews"
         ],
         "description": "",
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -187,10 +202,30 @@
     },
     "/review/game/{id}": {
       "get": {
+        "tags": [
+          "Reviews"
+        ],
         "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -248,6 +283,11 @@
           "Developer"
         ],
         "description": "",
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "body",
@@ -315,6 +355,11 @@
           "Developer"
         ],
         "description": "",
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -361,6 +406,11 @@
           "Developer"
         ],
         "description": "",
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -429,6 +479,11 @@
           "Games"
         ],
         "description": "",
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "body",
@@ -505,6 +560,11 @@
           "Games"
         ],
         "description": "",
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "gameId",
@@ -557,6 +617,11 @@
           "Games"
         ],
         "description": "",
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "gameId",
@@ -581,6 +646,11 @@
           "Publisher"
         ],
         "description": "",
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "body",
@@ -623,6 +693,11 @@
           "Publisher"
         ],
         "description": "",
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -696,6 +771,11 @@
           "Publisher"
         ],
         "description": "",
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -759,6 +839,15 @@
           }
         }
       }
+    }
+  },
+  "securityDefinitions": {
+    "OAuth2": {
+      "type": "oauth2",
+      "description": "This API uses OAuth 2 with the implicit grant flow.",
+      "flow": "implicit",
+      "authorizationUrl": "https://cse341-final-project-team17.onrender.com/login",
+      "scopes": {}
     }
   }
 }
