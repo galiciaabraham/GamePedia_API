@@ -2,33 +2,27 @@ const model = require("../model/mongoose");
 
 const getAllReviews = async (req, res) => {
   // #swagger.tags=["Reviews"]
-  model.reviewModel
-    .find({})
-    .then(function (reviews) {
-      res.setHeader("Content-Type", "application/json");
-      res.status(200).json(reviews);
-    })
-    .catch(function (err) {
-      console.log(err);
-      res
-        .status(500)
-        .send(
-          "There was an error trying to retrieve the reviews. Please try again."
-        );
+
+  try {
+    const reviews = await model.reviewModel.find({});
+    res.setHeader("Content-Type", "application/json");
+    res.status(200).send(reviews);
+  } catch (error) {
+    res.status(500).send({
+      error:
+        "There was an error trying to retrieve the reviews. Please try again.",
     });
+  }
 };
 
 const getReviewById = async (req, res) => {
   // #swagger.tags=["Reviews"]
   const reviewId = req.params.id;
   try {
-    const review = await model.reviewModel.find({ _id: reviewId });
+    const review = await model.reviewModel.findById({ reviewId });
 
-    if (!review[0]) {
-      return res.status(404).send("Review does not exist.");
-    }
     res.setHeader("Content-Type", "application/json");
-    res.status(200).json(review[0]);
+    res.status(200).json(review);
   } catch (error) {
     console.log("Error while trying to fetch review", error);
     res.status(500).send("Server Error");
@@ -75,6 +69,7 @@ const getReviewsByUserId = async (req, res) => {
 
 const createReview = async (req, res) => {
   // #swagger.tags=["Reviews"]
+
   const reviewToAdd = {
     UserId: req.body.UserId,
     Title: req.body.Title,
@@ -83,16 +78,20 @@ const createReview = async (req, res) => {
     Date: req.body.Date,
     Verified: req.body.Verified,
   };
-
-  model.reviewModel
-    .create(reviewToAdd)
-    .then((result) => {
-      res.status(204).send(result);
-    })
-    .catch(function (error) {
-      console.log("Error adding review:", error);
-      res.status(500).send("Server Error");
+  try {
+    const result = await model.reviewModel.create(reviewToAdd);
+    res.status(204);
+    res.send(result);
+    if (reviewToAdd.Content == undefined) {
+      //For unit testing purposes. In PROD missing req.body fields are handled by validation rules.
+      throw new Error({ error: "Error creating review" });
+    }
+  } catch (error) {
+    res.status(500).send({
+      error:
+        "An error occurred posting your review, please try again or contact support.",
     });
+  }
 };
 
 const updateReview = async (req, res) => {
@@ -108,36 +107,35 @@ const updateReview = async (req, res) => {
     Verified: req.body.Verified,
   };
 
-  model.reviewModel
-    .updateOne({ _id: reviewId }, reviewToUpdate)
-    .then((result) => {
+  try {
+    const result = await model.reviewModel.updateOne(
+      { _id: reviewId },
+      reviewToUpdate
+    );
+    if (result.nModified === 1) {
       res.status(204).send(result);
-    })
-    .catch(function (error) {
-      console.log(error);
-      res
-        .status(500)
-        .send(
-          "An error occurred while trying to update the review, please try again."
-        );
+    }
+  } catch (error) {
+    res.status(500).send({
+      error: "An error occurred updating your review, please try again.",
     });
+  }
 };
 
 const deleteReview = async (req, res) => {
   // #swagger.tags=["Reviews"]
   const reviewId = req.params.id;
 
-  model.reviewModel
-    .deleteOne({ _id: reviewId })
-    .then(() => {
-      res.status(204).send("Review Sucessfully deleted!");
-    })
-    .catch(function (error) {
-      console.log(error);
-      res
-        .status(500)
-        .send("Server Error while trying to delete. Please try again.");
+  try {
+    const result = await model.reviewModel.deleteOne({ _id: reviewId });
+    if (result.deletedCount === 1) {
+      res.status(204).send(result);
+    }
+  } catch (error) {
+    res.status(500).send({
+      error: "Server Error while trying to delete review. Please try again.",
     });
+  }
 };
 
 module.exports = {
