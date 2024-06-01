@@ -55,7 +55,7 @@ describe('Testing mongoose game controller function that returns one game by Id'
         const _game = 
             {
                 _id: "664fdf313e6b236e47dd0c76",
-                Name: "The Legend",
+                Name: "The Legend of Link",
                 Release: "2017",
                 Director: "Hidemaro",
                 Composer: "Manaka Kataoka",
