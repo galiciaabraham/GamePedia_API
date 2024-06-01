@@ -2,7 +2,6 @@ const model = require("../model/mongoose");
 
 const getAllReviews = async (req, res) => {
   // #swagger.tags=["Reviews"]
-
   try {
     const reviews = await model.reviewModel.find({});
     res.setHeader("Content-Type", "application/json");
@@ -19,7 +18,7 @@ const getReviewById = async (req, res) => {
   // #swagger.tags=["Reviews"]
   const reviewId = req.params.id;
   try {
-    const review = await model.reviewModel.findById( reviewId );
+    const review = await model.reviewModel.findById(reviewId);
 
     res.setHeader("Content-Type", "application/json");
     res.status(200).json(review);
