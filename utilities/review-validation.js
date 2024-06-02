@@ -8,7 +8,7 @@ const reviewValidator = () => {
     body("Rating", "Rating is required and should be a number between 1 and 5")
       .isNumeric()
       .custom((value) => value >= 1 && value <= 5),
-    body("Date", "Date is required and should be in ISO format").isISO8601(),
+    body("Date", "Date is required and should be in ISO format").notEmpty(),
     body(
       "Verified",
       "Verified is required and should be a boolean value"

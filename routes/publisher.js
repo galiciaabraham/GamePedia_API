@@ -59,8 +59,6 @@ router.get(
 router.delete(
   "/:id",
   auth.isAthenticated,
-  validator.publisherSearchValidator(),
-  validator.validate,
   errorHandling.handleErrors(publishersController.deletePublisher)
 );
 

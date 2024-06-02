@@ -277,7 +277,7 @@ describe("Testing review controller function that updates a review", () => {
     };
 
     mockingoose(reviewModel).toReturn(
-      { n: 1, nModified: 1, ok: 1 },
+      { n: 1, modifiedCount: 1, ok: 1 },
       "updateOne"
     );
 
@@ -297,7 +297,7 @@ describe("Testing review controller function that updates a review", () => {
 
     await reviewController.updateReview(req, res);
     expect(res.statusCode).toBe(204);
-    expect(res.data).toEqual({ n: 1, nModified: 1, ok: 1 });
+    expect(res.data).toEqual({ n: 1, modifiedCount: 1, ok: 1 });
   });
   test("should return an error with a 500 status", async () => {
     const _review = {

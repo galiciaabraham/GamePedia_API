@@ -3,7 +3,7 @@ const { body, param, validationResult } = require("express-validator");
 const publisherValidator = () => {
   return [
     body("Name", "Name of the publisher required").notEmpty(),
-    body("Founder", "Year founded is required").notEmpty(),
+    body("Founded", "Year founded is required").notEmpty(),
     body("Headquarters", "Name of Publisher Headquarters required").notEmpty(),
     body("President", "Name of Publisher President required").notEmpty(),
     body("Website", "Publisher Website required").notEmpty(),

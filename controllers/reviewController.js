@@ -76,6 +76,7 @@ const createReview = async (req, res) => {
     Rating: req.body.Rating,
     Date: req.body.Date,
     Verified: req.body.Verified,
+    GameId: req.body.GameId
   };
   try {
     const result = await model.reviewModel.create(reviewToAdd);
@@ -104,6 +105,7 @@ const updateReview = async (req, res) => {
     Rating: req.body.Rating,
     Date: req.body.Date,
     Verified: req.body.Verified,
+    GameId: req.body.GameId
   };
 
   try {
@@ -111,7 +113,8 @@ const updateReview = async (req, res) => {
       { _id: reviewId },
       reviewToUpdate
     );
-    if (result.nModified === 1) {
+   
+    if (result.modifiedCount === 1) {
       res.status(204).send(result);
     }
   } catch (error) {

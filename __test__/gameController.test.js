@@ -152,7 +152,7 @@ describe('Testing mongoose game controller function that updates an existing gam
             
         }
 
-        mockingoose(gameModel).toReturn({n: 1, nModified: 1, ok: 1} ,'updateOne');
+        mockingoose(gameModel).toReturn({n: 1, modifiedCount: 1, ok: 1} ,'updateOne');
 
         const req = {
             params:{gameId: "6658d309ada17e7b6d58a820"},
@@ -171,7 +171,7 @@ describe('Testing mongoose game controller function that updates an existing gam
 
         await gameController.updateGame(req, res);
         expect(res.statusCode).toBe(204);
-        expect(res.data).toEqual({ n: 1, nModified: 1, ok: 1 });
+        expect(res.data).toEqual({ n: 1, modifiedCount: 1, ok: 1 });
 
     });
     test('should return an error with a 500 status', async () => {

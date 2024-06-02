@@ -84,8 +84,9 @@ publishersController.updatePublisher = async (req, res) => {
 publishersController.getPublisherByName = async (req, res) => {
   // #swagger.tags=["Publisher"]
   const publisherName = req.params.name;
+  console.log(publisherName);
   try {
-    const publishers = await model.publisherModel.findOne(publisherName);
+    const publishers = await model.publisherModel.find({Name: publisherName});
     res.setHeader("Content-Type", "application/json");
     res.status(200).send(publishers);
   } catch (error) {

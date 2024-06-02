@@ -71,7 +71,7 @@ gameController.updateGame = async (req, res) => {
   const filter = { _id: gameId };
   try {
     const result = await model.gameModel.updateOne(filter, changes);
-    if (result.nModified === 1) {
+    if (result.modifiedCount === 1) {
       res.status(204).send(result);
     }
   } catch (error) {
