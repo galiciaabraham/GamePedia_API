@@ -5,7 +5,7 @@
     "description": "An API to provide information about games, developers, publishers and reviews in Json objects",
     "version": "1.0.0"
   },
-  "host": "cse341-final-project-team17.onrender.com",
+  "host": "https://gamepedia-api.onrender.com",
   "basePath": "/",
   "schemes": [
     "https",
@@ -846,7 +846,7 @@
       "type": "oauth2",
       "description": "This API uses OAuth 2 with the implicit grant flow.",
       "flow": "implicit",
-      "authorizationUrl": "https://cse341-final-project-team17.onrender.com/login",
+      "authorizationUrl": "https://gamepedia-api.onrender.com/login",
       "scopes": {}
     }
   }

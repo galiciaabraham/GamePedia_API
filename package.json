@@ -1,5 +1,5 @@
 {
-  "name": "cse341-final-project-team17",
+  "name": "gamepedia_api",
   "version": "1.0.0",
   "description": "Final project for CSE341 Team 17",
   "main": "server.js",
