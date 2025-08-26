@@ -18,6 +18,14 @@ The app uses a connection to a MongoDB database.
 
 # Future Work
 
-* I tried to implement Nativewind, however some version issues and limitations related to not having an iOS system limited my ability to use it. I will check once the version errors have been fixed.  
-* I will add camera and mic integration options so the user can record pictures, videos and audio records in the entries.
-* The styling was kept in a basic stage because of time constrains, but I will improve it later on.
+* The entry URL doesn't give away what to do, when visited on a browser. This should give clear instructions on what needs to be done to access the api-docs page which contains the documentation.
+* The use of session() keeps information on the localstorage that should be moved into a secured cookie.
+* Additional features could be added such as filtering or organizing the data.
+
+# Collaborators
+
+- James Salva @fireburn553
+- Andres Costanzi @adcostanzi
+- Luis Daniel Parra @dp-cross-projects
+- Jefferson Abreu @jeffabreu
+- Abraham Galicia @galiciaabraham
