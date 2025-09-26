@@ -6,7 +6,7 @@ The app has been built to demonstrate our skills to write an MVC application tha
 
 # Development Environment
 
-The application was built using VS Code, JavaScript, and Swagger for documentation. 
+The application was built using VS Code, JavaScript, and Swagger for documentation. We used Jest and Mockingoose to write unit testing for our API routes. 
 
 The app uses a connection to a MongoDB database. 
 
